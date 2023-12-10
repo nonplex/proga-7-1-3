@@ -1,4 +1,4 @@
-﻿#include <iostream>
+#include <iostream>
 #include <cmath>
 #include <locale>
 #include <stdlib.h>
@@ -8,15 +8,15 @@
 //с заданными координатами и лежащий на оси OX. Если входит,
 //то функция должна вернуть 1, иначе – 0.
 using namespace std;
-//Выполняет код, не возвращая значения,Функция
-int f(int x, int x2, int y) {
+//Функция
+void f(int x, int x2, int y,bool& result) {
     if ((x <= 0) && (x2 >= 0) && (y == 0))
-        return 1;
+        result= 1;
     else
         if ((x >= 0) && (x2 <= 0) && (y == 0))
-            return 1;
+            result = 1;
         else
-            return 0;
+            result = 0;
 }
 int main() {
     setlocale(LC_ALL, "ru");
@@ -27,8 +27,9 @@ int main() {
     cin >> x2;
     cout << "Введите координату y: ";
     cin >> y;
-    //возвращение значения с использованием указателя
-    int result = f(x,x2,y);
+    bool result;
+    //возвращение значения
+    f(x, x2, y,result);
     if (result)
         cout << "Начало координат входит в отрезок";
     else
